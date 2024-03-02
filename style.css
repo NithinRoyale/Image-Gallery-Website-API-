@@ -203,6 +203,20 @@ form {
     /* display: none; */
 }
 
+.show-more-button:hover {
+    opacity: .9;
+    box-shadow: 4px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.show-more-button:active {
+    opacity: 1;
+    color: #000000;
+    background-color: white;
+    font-size: 18px;
+    font-weight: bolder;
+
+}
+
 
 
 
