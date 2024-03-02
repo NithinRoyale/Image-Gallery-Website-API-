@@ -12,14 +12,32 @@ const showMore = document.getElementById("show-more-button"); // Corrected targe
 const searchRes = document.querySelector(".search-result");
 // const icon = document.querySelector(".icon");
 
-
+let random = 0;
 let inputData = "";
 let pageNo = 1;
 
+function displayRandomImages (){
+    random = 1;
+    searchImages();
+}
+
 
 async function searchImages (){
+
+    
     inputData = searchInput.value;
+    if(random === 1)
+    {
+        const randomWords = ['random', 'pink', 'red', 'blue', 'orange', 'black', 'white', "sky","water"];
+        const randomTerm = [Math.floor(Math.random() * randomWords.length)];
+
+        inputData = randomTerm;
+        random = 0;
+    }
+
     const url =`https://api.unsplash.com/search/photos?page=${pageNo}&query=${inputData}&client_id=${accessKey}`;
+
+    
 
     const responce = await fetch(url);
     const data = await responce.json();
@@ -200,9 +218,6 @@ showMore.addEventListener("click", () =>{
 
 
 
-
-
-
 searchRes.addEventListener("mouseover",function() {
     icon.style.display='block';
 });
@@ -234,4 +249,5 @@ searchRes.addEventListener("mouseout",() =>{
 //         }
 //     }
 // });
+
 
