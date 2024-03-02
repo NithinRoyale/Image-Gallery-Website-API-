@@ -32,7 +32,7 @@ async function searchImages (){
         const randomTerm = [Math.floor(Math.random() * randomWords.length)];
 
         inputData = randomTerm;
-        random = 1;
+        random = 0;
 
         
     }
