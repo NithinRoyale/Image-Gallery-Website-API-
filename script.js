@@ -32,7 +32,9 @@ async function searchImages (){
         const randomTerm = [Math.floor(Math.random() * randomWords.length)];
 
         inputData = randomTerm;
-        random = 0;
+        random = 1;
+
+        
     }
 
     const url =`https://api.unsplash.com/search/photos?page=${pageNo}&query=${inputData}&client_id=${accessKey}`;
