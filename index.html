@@ -2,75 +2,220 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image search Website</title>
-    <link rel="stylesheet" href="style.css">
 
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="login-register.css">
+    
+    <title>Slider SignIn/SignUp Page</title>
 </head>
 <body>
-    
-    <header>
-        <h1 onclick="handleLogoClick()">Image Gallery Website</h1>
-    </header>
-    
-    <form action="">
-        <input type="text" id="search-input" placeholder="Search for Images">
-        <button id="search-button">Search</button>
 
-    </form>
+    <div class="container">
+        <div class="signin-signup">
+            <form action="" class="sign-in-form" id="sign-in">
+                <h2 class="title">Sign in</h2>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" placeholder="Email" id="emailInp2">
+                </div>
 
-    <div class="search-results">
-        <!-- <div class="search-result">
-            <img src="https://images.unsplash.com/photo-1694288832191-ea6e50eb7034?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8" alt="1">
-            <a href="https://unsplash.com/photos/a-stack-of-rocks-sitting-on-top-of-a-beach-BK14KNlJ2Rc" target="_blank">Rock </a>
-            
-            <div class="icon-container">
-                <div  class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M24.0605 10L24.0239 38"/><path d="M10 24L38 24"/></g></svg>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" id="PasswordInp2">
                 </div>
                 
+                <input type="submit" value="Login" class="btn" id="login">
 
-
-                <div class="icon">
-                    <a href="https://unsplash.com/photos/a-stack-of-rocks-sitting-on-top-of-a-beach-BK14KNlJ2Rc" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 48 48"><path fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" d="M39.236 42.5H8.764M24 33.924V5.5M12.287 22.211L24 33.924l11.713-11.713"/></svg>
+                <p class="social-text">Or Sign in with social platform</p>
+                <div class="social-media">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook"></i>
                     </a>
-                    
+                    <a href="" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
                 </div>
-                
-            </div> -->
+                <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a></p>
+            </form>
+
+
+            <form action="" class="sign-up-form" id="sign-up">
+
+                <h2 class="title">Sign up</h2>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Username" id="userNameInp">
+                </div>
+
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" placeholder="Email" id="emailInp">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" id="PasswordInp">
+                </div>
+
+                <input type="submit" value="Sign up" class="btn" id="register">
+
+
+                <p class="social-text">Or Sign in with social platform</p>
+                <div class="social-media">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <p class="account-text">Already have an account? <a href="#" id="sign-in-btn2">Sign in</a></p>
+            </form>
         </div>
 
-        <div class="search-result">
-            <!-- <img src="https://images.unsplash.com/photo-1705792960060-a8deefe94a40?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxM3x8fGVufDB8fHx8fA%3D%3D" alt="2">
-            <a href="https://unsplash.com/photos/a-bunch-of-different-colored-papers-stacked-on-top-of-each-other-O-QFyq72r88" target="_blank">Paper </a>
-            <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M24.0605 10L24.0239 38"/><path d="M10 24L38 24"/></g></svg>
-            </div> -->
-        </div>
 
-        <div class="search-result">
-            <!-- <img src="https://images.unsplash.com/photo-1707733005801-13548a5f36ea?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyOHx8fGVufDB8fHx8fA%3D%3D" alt="3">
-            <a href="https://unsplash.com/photos/a-narrow-alley-way-with-tables-and-chairs-WkVf7ce7RAc" target="_blank">Alley way </a>
-            <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M24.0605 10L24.0239 38"/><path d="M10 24L38 24"/></g></svg>
-            </div> -->
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>Existing User ?..</h3>
+                    <!-- <p>any detail </p> -->
+                    <button class="btn" id="sign-in-btn">Sign in</button>
+                </div>
+                <img src="signin.svg" alt="" class="image">
+            </div>
+
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>New User ?..</h3>
+                    <!-- <p>any detail</p> -->
+                    <button class="btn" id="sign-up-btn">Sign up</button>
+                </div>
+                <img src="signup.svg" alt="" class="image">
+            </div>
         </div>
     </div>
 
-    
-    <button id="show-more-button" class="show-more-button">Show More</button>
-*/
-    
-    
-    <script src="script.js"></script>
+
     <script>
-        // Call the function to display random images on page load
-        displayRandomImages();
-         
-        const handleLogoClick = () => {
-            window.location.reload(); 
+        const sign_in_btn = document.querySelector("#sign-in-btn");
+        const sign_up_btn = document.querySelector("#sign-up-btn");
+        const container = document.querySelector(".container");
+        const sign_in_btn2 = document.querySelector("#sign-in-btn2");
+        const sign_up_btn2 = document.querySelector("#sign-up-btn2");
+
+
+        sign_up_btn.addEventListener("click", () => {
+            container.classList.add("sign-up-mode");
+        });
+        sign_in_btn.addEventListener("click", () => {
+            container.classList.remove("sign-up-mode");
+        });
+        sign_up_btn2.addEventListener("click", () => {
+            container.classList.add("sign-up-mode2");
+        });
+        sign_in_btn2.addEventListener("click", () => {
+            container.classList.remove("sign-up-mode2");
+        });
+    </script>
+
+    <script type="module">
+        // import necessory
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getDatabase, set, ref, get, child } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+    
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyB78syYL7IBWxr4cxeFwI54tSsRiwXH9ls",
+            authDomain: "image-gallery-api-257d8.firebaseapp.com",
+            databaseURL: "https://image-gallery-api-257d8-default-rtdb.firebaseio.com",
+            projectId: "image-gallery-api-257d8",
+            storageBucket: "image-gallery-api-257d8.appspot.com",
+            messagingSenderId: "590720156198",
+            appId: "1:590720156198:web:0bf983a4dcad7284e71ce7"
         };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db =getDatabase();
+        const auth =getAuth(app);
+
+        const dbref =ref(db);
+
+        let signIn =document.getElementById("sign-in");
+        let signUp =document.getElementById("sign-up");
+        let PasswordInp =document.getElementById("PasswordInp");
+        let emailInp =document.getElementById("emailInp");
+        let userNameInp =document.getElementById("userNameInp");
+
+        let PasswordInp2 =document.getElementById("PasswordInp2");
+        let emailInp2 =document.getElementById("emailInp2");
+
+        let registerUser = (event) =>{
+            event.preventDefault();
+
+            createUserWithEmailAndPassword(auth,emailInp.value, PasswordInp.value)
+            .then((credentials) =>{
+                // console.log(credentials)
+                set(ref(db, 'UsersAuthList/' + credentials.user.uid),{
+                    UserName: userNameInp.value
+                })
+            })
+            .catch((error) =>{
+                alert(error.message);
+                console.log(error.code);
+                console.log(error.message);
+            })
+        }
+
+        signUp.addEventListener("submit", registerUser);
+
+
+        let loginUser = (event) =>{
+            event.preventDefault();
+
+            signInWithEmailAndPassword(auth,emailInp2.value, PasswordInp2.value)
+            .then((credentials) =>{
+                // console.log(credentials)
+                get(child(dbref, 'UsersAuthList/' + credentials.user.uid)).then((snapshot)=>{
+                    if(snapshot.exists){
+                        sessionStorage.setItem("user-info", JSON.stringify({
+                            UserName: snapshot.val().userName,
+                            
+                        }));
+
+                        sessionStorage.setItem("user-creds",JSON.stringify(credentials.user));
+                        window.location.href ="home.html";
+                    }
+                })
+            })
+            .catch((error) =>{
+                alert(error.message);
+                console.log(error.code);
+                console.log(error.message);
+            })
+        }
+
+        signIn.addEventListener("submit", loginUser);
+
+
     </script>
 </body>
 </html>
