@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 header {
-    margin-top: 25px;
-    background: linear-gradient(135deg, #198ed7, #1ac9db);
-    padding: 20px 0;
+    /* margin-top: 25px; */
+    background: linear-gradient(135deg, #1abeff, #0084ff);
+    padding: 15px 0;
     text-align: center;
     border-bottom: 2px solid #135f8f;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -13,7 +13,7 @@ header {
 
 
 header:hover {
-    background: linear-gradient(135deg, #1ac9db, #198ed7);
+    background: linear-gradient(135deg, #0084ff, #1abeff);
 }
 
 
@@ -61,6 +61,41 @@ form {
     font-size: 18px;
 }
 
+#signoutbutton {
+    /* align-self: flex-end; */
+    margin-left: 330px;
+    padding: 10px 20px;
+    margin-right: -500px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;    
+    box-shadow: 0 0 6px rgba(0,0,0,0.5);
+    cursor: pointer;
+
+    transition: opacity 0.3s  ease-in-out;
+    transition: box-shadow 200ms;
+    transition: background-color 200ms;
+    transition: color 200ms;
+    transition: transform 400ms;
+}
+
+#signoutbutton :hover{
+    opacity: .8;
+    box-shadow: 4px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+#signoutbutton:active{
+    opacity: 1;
+    color: #000000;
+    background-color: white;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+
+
 #search-button {
     padding: 10px 20px;
     background-color: #000000;
@@ -73,6 +108,7 @@ form {
     margin-left: 10px;
 
 }
+
 
 #search-button:hover {
     opacity: .9;
@@ -102,6 +138,13 @@ form {
     border-radius: 4px;
     margin-right: 10px;
 
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+
+    transition: height 0.2s, width 0.2s;
+
+
     /* height: 2.25em;
     width: 2.25em; */
     
@@ -109,16 +152,16 @@ form {
 
 
 .icon :hover {
-    opacity: 1;
+    opacity: 0.65;
     cursor: pointer;
     outline: none;
     box-shadow: none;
 }
 
 .icon :active{
-    height: 2.5em;
-    width: 2.5em;
+    transform: scale(1.25);
     cursor: pointer;
+       
 }
 
 
@@ -188,16 +231,133 @@ form {
     color: black;
 }
 
+
+
+
+.sidebar {
+    width: 78px;
+    max-height: 70%;
+
+    position: fixed;
+    border: none;
+    border-radius: 5px;
+    height: 100%;
+    margin-top: -130px;
+    /* margin-right: 50px; */
+    /* padding-right: 50px; */
+
+    
+
+    background-color: #1abeff;
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+
+.sidebar-icons{
+    height: 72.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+
+    transition: opacity 500ms;
+    transition: box-shadow 300ms;
+}
+
+.sidebar-icons:hover{
+    box-shadow: 4px 3px 10px rgba(0, 0, 0, 0.5);
+    background-color: #41a3ff;
+    opacity: .96;
+}
+
+.sidebar-icons:active {
+    box-shadow: 4px 3px 10px rgba(0, 0, 0, 0.5);
+    opacity: .8;
+    font-size: 14px;
+}
+
+
+
+.sidebar-icons-c {
+    height: 72.5px;
+    text-align: center;
+    padding-top:10px ;
+    cursor: pointer;
+    padding-left: -4px;
+
+    transition: opacity 500ms;
+    transition: box-shadow 300ms;
+}
+
+.sidebar-icons-c :hover{
+    box-shadow: 4px 3px 10px rgba(0, 0, 0, 0.5);
+    opacity: .96;
+}
+
+.moreContent {
+    border: none;
+}
+
+.moreContent :hover{
+    background-color: #41a3ff;
+}
+
+
+.dropdown {
+    justify-content: center;
+    position: relative;
+    display: inline-block;
+    border: none ;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #1abeff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content div {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content div:hover {
+    background-color: #41a3ff;
+    /* background-color: rgb(2, 106, 96); */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
 .show-more-button {
     background-color: rgb(8, 124, 225);
-    
+    font-weight: bolder;
     font-size: 18px;
     border: none;
     color: white;
     padding: 10px;
     text-align: center;
-    display: none;
-    margin: 30px auto;
+    margin: 30px;
+    margin-left: 690px;
     cursor: pointer;
     border-radius: 5px;
     /* display: none; */
