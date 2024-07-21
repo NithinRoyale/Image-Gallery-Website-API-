@@ -298,6 +298,7 @@ form {
 
 .moreContent {
     border: none;
+    margin-top: -5px;
 }
 
 .moreContent :hover{
