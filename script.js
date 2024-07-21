@@ -159,4 +159,4 @@ dropdownLinks.forEach(link => {
     });
 });
 
-displayRandomImages();
+
