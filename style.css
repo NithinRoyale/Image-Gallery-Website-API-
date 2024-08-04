@@ -50,7 +50,7 @@ form {
 }
 
 #search-input {
-    width: 60%;
+    width: 50%;
     max-width: 400px;
     padding: 10px 20px;
     border: none;
@@ -130,7 +130,7 @@ form {
     /* display: inline-block; */
 }
 
-.icon {
+.icon{
     display: none;   
     margin: 5px;
     overflow: hidden;
@@ -151,14 +151,14 @@ form {
 }
 
 
-.icon :hover {
+.icon:hover {
     opacity: 0.65;
     cursor: pointer;
     outline: none;
     box-shadow: none;
 }
 
-.icon :active{
+.icon:active{
     transform: scale(1.25);
     cursor: pointer;
        
@@ -167,7 +167,7 @@ form {
 
 
 
-.search-results {
+.search-results{
     /* display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -183,7 +183,7 @@ form {
     margin: 0 auto;
 }
 
-.search-result {
+.search-result{
     margin-bottom: 60px;
     /* width: calc(33.33% - 20px); */
     width: 400px;
@@ -250,6 +250,7 @@ form {
 
     background-color: #1abeff;
     box-shadow: 0 7px 10px rgba(0, 0, 0, 0.5);
+    /* overflow-y: auto; */
 }
 
 
@@ -384,13 +385,17 @@ form {
 @media screen and (max-width : 768px) {
 
     .search-results{
-        justify-content: space-between;
+        margin-left: 40px;
+        flex-wrap: wrap;
         padding-left: 20px;
         padding-right: 20px;
     }
     .search-result {
         width: calc(50% - 20px);
-
+        /* margin-left: 60px; */
+    }
+    .sidebar {
+        width: 50px; /* Smaller width for tablets and smaller screens */
     }
     
 }
@@ -398,12 +403,32 @@ form {
 
 @media screen and (max-width : 480px) {
     .search-results{
+        margin-top: 20px;
         justify-content: center;
+        /* margin-left: 40px; */
     }
     .search-result {
         width: calc(100% - 20px);
         max-width: none;
         
+    }
+    .sidebar {
+        margin-top: -45px;
+        width: 78px;
+        height: 500px;
+        max-height: none;
+        position: relative; /* Adjust position for mobile screens */
+    }
+    
+    .sidebar-icons {
+        width: 100%;
+        flex-direction: row; /* Align icons horizontally */
+        padding: 5px;
+    }
+    
+    .sidebar-icons-c {
+        width: 100%;
+        text-align: center;
     }
     
 }
