@@ -430,6 +430,11 @@ form {
         width: 100%;
         text-align: center;
     }
+
+    .show-more-button {
+        margin-left: 150px;
+        /* justify-content: center; */
+    }
     
 }
 
