@@ -175,8 +175,15 @@
             .then((credentials) =>{
                 // console.log(credentials)
                 set(ref(db, 'UsersAuthList/' + credentials.user.uid),{
-                    UserName: userNameInp.value
+                    UserName: userNameInp.value,
+                    Email: emailInp.value
                 })
+                .then(() => {
+                    alert("User registered successfully!");
+                })
+                .catch((error) => {
+                    console.error("Error saving user info: ", error);
+                });
             })
             .catch((error) =>{
                 alert(error.message);
@@ -195,9 +202,10 @@
             .then((credentials) =>{
                 // console.log(credentials)
                 get(child(dbref, 'UsersAuthList/' + credentials.user.uid)).then((snapshot)=>{
-                    if(snapshot.exists){
+                    if(snapshot.exists()){
                         sessionStorage.setItem("user-info", JSON.stringify({
-                            UserName: snapshot.val().userName,
+                            UserName: snapshot.val().UserName,
+                            Email: snapshot.val().Email  
                             
                         }));
 
