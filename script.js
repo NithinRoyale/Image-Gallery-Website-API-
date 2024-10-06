@@ -233,4 +233,4 @@ dropdownLinks.forEach(link => {
     });
 });
 
-displayRandomImages();
+// displayRandomImages();
