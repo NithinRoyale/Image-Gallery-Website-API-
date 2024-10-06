@@ -1,6 +1,6 @@
-# Image Gallery Website :
+# Image Gallery Website
 
-This project is a simple image search website that allows users to search for images using keywords. It fetches images from the Unsplash API and displays them dynamically. Users can click on an image to view it on Unsplash, download it, or add it to their favorites.
+This website is an image gallery platform that utilizes the Unsplash API to display images based on user queries. It integrates functionalities such as real-time object detection using TensorFlow.js, user authentication with Firebase, and personalized search history. Users can upload images, detect objects, and search for related content. The site features a dynamic, user-friendly interface with responsive design powered by Bootstrap and JavaScript, enhancing the overall user experience.
 
 ## Hosted Link 
 
@@ -8,60 +8,62 @@ You can access the hosted version of the website [Image Gallery Website](https:/
 
 ## Features
 
-### 1. Search Functionality
-- Users can enter keywords in the search bar to find related images.
-- The website fetches images dynamically from the Unsplash API based on the user's search query.
+### 1. User Authentication & Profile Management
+- Firebase Authentication is used to manage user accounts, login, and sign-out functionality. The current user’s UID is retrieved from Firebase for personalized data search using search history.
+- **Profile Icon & Dropdown**: The profile icon is clickable, displaying a dropdown menu for user actions. The dropdown can be toggled and automatically closes if clicked outside.
 
-### 2. Display of Search Results
-- Images related to the search query are displayed in a grid layout.
-- Each image is accompanied by a title and icons for viewing, downloading, and adding to favorites.
+### 2. Image Detection with TensorFlow.js
+- The TensorFlow COCO-SSD Model is integrated to perform real-time image detection on user-uploaded images.
+  - It processes the image using TensorFlow's COCO-SSD object detection model.
+  - Detects objects and displays the label of the first detected object.
+  - Automatically inputs the detected object label into the search bar and triggers a search.
 
-### 3. Show More Button
-- Users can click the "Show More" button to load additional search results.
+### 3. Image Search and History
+- **Image Search Functionality**:
+  - Users can search for images by typing search terms or using the detected label from uploaded images.
+  - The search term is normalized (converted to lowercase) before saving and processing.
+  - The system prevents duplicate search terms and limits the search history to the last 10 unique searches.
+- **Search History Management**:
+  - The website stores the user's search history in Firebase Realtime Database under the user's data.
+  - Searches are saved in the Searches list under the user's profile, avoiding duplicate entries.
 
-### 4. Download Images
-- Users can click on the download icon to download the image directly to their device.
+### 4. Image Gallery Logo/Header
+- Displays random images, leveraging the website’s backend to show images related to search terms, designed to load dynamically when the user interacts with the gallery.
 
-### 5. Favorite Images
-- Users can click on the tick icon to add an image to their favorites.
+### 5. User Interface (UI) Features
+- **Search Button**: Users can manually click the search button, or it’s automatically triggered after an object detection event.
+- **Top Button**: A "Scroll to Top" button appears when the user scrolls down, enhancing the navigation experience.
+- **Popup Management**: The website includes popup elements to show messages or additional information to the user, styled using CSS and controlled by JavaScript.
+- **Responsive Design & Animations**: Uses Bootstrap 5.2 for a responsive layout, ensuring a clean UI across different screen sizes. Hover effects and animations enhance interactivity.
+- **Bookmark/Saved Icon**: This icon allows users to save their favorite images for easy access later.
+- **Download Icon**: The download icon enables users to conveniently download images to their devices.
+- **Show More Button** : Users can click the "Show More" button to load additional search results.
 
-### 6. Responsive Design
-- The website is responsive and adjusts its layout based on the screen size, providing an optimal viewing experience across devices.
+### 6. Session Management
+- **Session Storage**: User sessions and profile information are maintained using JavaScript session storage.
+
+### 7. Sign-out Functionality
+- A sign-out button enables users to securely log out, redirecting them to the homepage (index.html) and clearing session data.
+
+### 8. Unsplash API - JavaScript Functions
+- The Unsplash API enables dynamic retrieval of high-resolution images through various endpoints, requiring authentication via an API key.
+
+### 9. Error Handling
+- **Firebase Error Handling**: In case of any errors while fetching or saving user data, appropriate error messages are logged to the console.
+- **No Object Detected**: If no objects are detected in an uploaded image, a message informs the user.
 
 ## Technologies Used
-- HTML5
-- CSS3
-- JavaScript (ES6+)
+- **Frontend**:
+  - HTML5, CSS3, JavaScript (Vanilla JS and ES6+)
+  - Bootstrap for responsive design
+  - TensorFlow.js for object detection
+- **Backend**:
+  - Firebase Realtime Database for storing user data, search history, and authentication
 
-## External Libraries/APIs
-- [Unsplash API](https://unsplash.com/developers) - Used to fetch images based on search queries.
-
-## Getting Started
-To run this project locally, follow these steps:
-
-1. Clone the repository to your local machine:
-
-```
-git clone https://github.com/your-username/image-search-website.git
-```
-
-2. Navigate to the project directory:
-
-```
-cd image-search-website
-```
-
-3. Open the `index.html` file in your web browser.
-
-## Usage
-1. Enter a keyword in the search bar.
-2. Press Enter or click the "Search" button.
-3. Scroll through the search results.
-4. Click on an image to view it on Unsplash.
-5. Click the download icon to download the image to your device.
-6. Click the tick icon to add an image to your favorites.
-7. Click the "Show More" button to load additional search results.
+## Conclusion
+The website integrates advanced technologies like TensorFlow for real-time image detection, Firebase for user management and search history, and a clean UI design for an intuitive user experience. It is built to offer efficient search functionalities, personalized user sessions, and dynamic UI components.
 
 ## Contributors
-
 - [Nithin](https://github.com/NithinRoyale/)
+
+
