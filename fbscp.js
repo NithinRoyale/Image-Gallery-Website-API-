@@ -1,24 +1,24 @@
 
 
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-// import { getDatabase, set, push , ref, get, child, update } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
-// import { getAuth } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+import { getDatabase, set, push , ref, get, child, update } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 
-// const firebaseConfig = {
-//     apiKey: "AIzaSyB78syYL7IBWxr4cxeFwI54tSsRiwXH9ls",
-//     authDomain: "image-gallery-api-257d8.firebaseapp.com",
-//     databaseURL: "https://image-gallery-api-257d8-default-rtdb.firebaseio.com",
-//     projectId: "image-gallery-api-257d8",
-//     storageBucket: "image-gallery-api-257d8.appspot.com",
-//     messagingSenderId: "590720156198",
-//     appId: "1:590720156198:web:0bf983a4dcad7284e71ce7"
-// };
+const firebaseConfig = {
+    apiKey: "AIzaSyB78syYL7IBWxr4cxeFwI54tSsRiwXH9ls",
+    authDomain: "image-gallery-api-257d8.firebaseapp.com",
+    databaseURL: "https://image-gallery-api-257d8-default-rtdb.firebaseio.com",
+    projectId: "image-gallery-api-257d8",
+    storageBucket: "image-gallery-api-257d8.appspot.com",
+    messagingSenderId: "590720156198",
+    appId: "1:590720156198:web:0bf983a4dcad7284e71ce7"
+};
 
 
-// const app = initializeApp(firebaseConfig);
-// const db = getDatabase();
-// const auth = getAuth(app);
-// const dbref = ref(db);
+const app = initializeApp(firebaseConfig);
+const db = getDatabase();
+const auth = getAuth(app);
+const dbref = ref(db);
 // const dbRef = firebase.database().ref();
 
 
@@ -97,20 +97,20 @@ async function searchImages(isNewSearch = false) {
 
         icon1.addEventListener("click", () => {
             if (!isClicked) {
-                // const userId = auth.currentUser.uid; 
-                // const imageId= result.id;
+                const userId = auth.currentUser.uid; 
+                const imageId= result.id;
 
                 
-                // const userImageRef = ref(db, `UsersAuthList/${userId}/imageIds/${imageId}`);
+                const userImageRef = ref(db, `UsersAuthList/${userId}/imageIds/${imageId}`);
 
                
-                // set(userImageRef, true)
-                //     .then(() => {
-                //         console.log("Image ID added successfully!");
-                //     })
-                //     .catch((error) => {
-                //         console.error("Error adding Image ID:", error);
-                //     });
+                set(userImageRef, true)
+                    .then(() => {
+                        console.log("Image ID added successfully!");
+                    })
+                    .catch((error) => {
+                        console.error("Error adding Image ID:", error);
+                    });
 
 
 

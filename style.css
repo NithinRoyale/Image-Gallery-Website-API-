@@ -5,15 +5,67 @@ header {
     background: linear-gradient(135deg, #1abeff, #0084ff);
     padding: 15px 0;
     text-align: center;
-    border-bottom: 2px solid #135f8f;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 0 0 20px 20px; 
+    /* border-bottom: 2px solid #135f8f; */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 2px 2px; 
     margin-bottom: 25px;
 }
 
 
 header:hover {
     background: linear-gradient(135deg, #0084ff, #1abeff);
+}
+
+footer {
+    /* background-color: #222; */
+    background: linear-gradient(135deg, #1abeff, #0084ff);
+    color: #000000;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto; /* Pushes the footer to the bottom */
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items:center;
+}
+
+.footer-container p{
+    margin-top: 10px;
+    padding-top: 0px;
+    margin-left: 0px;
+}
+
+.social-links {
+    /* color: #000000; */
+    margin-top: 0px;
+    margin-left: 800px;
+    padding-top: 0px;
+}
+
+.social-links a {
+    
+    color: #000000;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.social-links a:hover {
+    color: #fff;
+}
+
+.social-links svg {
+    margin-right: 5px; /* Space between icon and text */
+    fill: currentColor; /* Makes the icon inherit the text color */
+    width: 24px; /* Adjust icon size */
+    height: 24px; /* Adjust icon size */
+}
+
+.social-links svg :hover {
+    color: #fff;
 }
 
 
@@ -41,7 +93,13 @@ header:hover h1 {
     display: inline-block;
     position: absolute;
     right: 20px;
-    top: 20px;
+    top: 10px;
+}
+
+.profile-container p{
+    /* position: absolute;
+    top: 45px; */
+    font-weight: bold;
 }
 .profile-icon {
     padding-top: 4px;
@@ -367,7 +425,7 @@ form {
     flex-wrap: wrap;
     flex-direction: column; */
     
-
+    top: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
