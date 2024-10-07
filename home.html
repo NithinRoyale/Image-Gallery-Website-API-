@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="favicon2.png">
+        <!-- <link rel="icon" type="image/png" href="images/favicon2.png"> -->
+        <link rel="icon" type="image/png" href="favicon.png">
         <title>Image search Website</title>
         <link rel="stylesheet" href="style.css">
 
@@ -18,7 +19,7 @@
                     transform: translateY(-500px);
                 }
                 to {
-                    opacity: 1.5;
+                    opacity: 1.5; 
                     scale: 1;
                     /* clip-path: inset(0 0 0 0); */
                     transform: translateY(0px);
@@ -76,8 +77,8 @@
         
         <header>
             
-            <h1 onclick="handleLogoClick()">Image Gallery Website</h1>
-            <div class="profile-container">
+            <h1 id="header-name" onclick="handleLogoClick()">Image Gallery Website</h1>
+            <div class="profile-container" title="Click to View Dropdown Menu">
                 <div class="profile-icon" id="profileIcon" onclick="toggleDropdown()">
                     
                 </div>
@@ -92,7 +93,10 @@
                         My Profile
                     </a>
             
-                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M18.5 2h-12C4.57 2 3 3.57 3 5.5V22l7-3.5l7 3.5v-9h5V5.5C22 3.57 20.43 2 18.5 2M15 18.764l-5-2.5l-5 2.5V5.5C5 4.673 5.673 4 6.5 4h8.852A3.45 3.45 0 0 0 15 5.5zM20 11h-3V5.5c0-.827.673-1.5 1.5-1.5s1.5.673 1.5 1.5z"/></svg>Bookmarked</a>
+                    <a href="#" onclick="bookmarkImage()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M18.5 2h-12C4.57 2 3 3.57 3 5.5V22l7-3.5l7 3.5v-9h5V5.5C22 3.57 20.43 2 18.5 2M15 18.764l-5-2.5l-5 2.5V5.5C5 4.673 5.673 4 6.5 4h8.852A3.45 3.45 0 0 0 15 5.5zM20 11h-3V5.5c0-.827.673-1.5 1.5-1.5s1.5.673 1.5 1.5z"/></svg>
+                        Bookmarked
+                    </a>
                     
                     <a href="#" id="signoutbutton">
                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
@@ -108,7 +112,7 @@
                 
             </div>
         </header>
-        <img src="favicon2.png" alt="Logo" class="logo">
+        <img src="favicon.png" alt="Logo" class="logo">
 
 
         <!-- Popup -->
@@ -127,18 +131,17 @@
         
         <form action="">
             <input type="text" id="search-input" placeholder="Search for Images">
-            <button id="search-button">Search</button>
+            <button id="search-button" title="Click to Search for Images">Search</button>
             
             <input type="file" id="imageUploadContainer" accept="image/*" style="display:none;" />
 
-            <label for="imageUploadContainer" class="imageUpload">
+            <label for="imageUploadContainer" class="imageUpload" title="Click to Scan Image to upload a image and Search for similar results ">
                 <!-- <img src="upload-icon.png" alt="Upload Icon"> -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="white-icon">
                     <path d="m9 13 3-4 3 4.5V12h4V5c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h8v-4H5l3-4 1 2z"></path>
                     <path d="M19 14h-2v3h-3v2h3v3h2v-3h3v-2h-3z"></path>
                 </svg>
-                
-                Upload Image
+                Scan Image
             </label>
 
             <p id="output"></p>
@@ -208,7 +211,9 @@
 
     </div> 
 
-        
+        <!-- <div>
+             
+        </div> -->
     
         <div class="search-results">
             <!-- <div class="search-result">
@@ -229,8 +234,8 @@
                         
                     </div>
                     
-                </div> -->
-            </div>
+                </div> 
+            </div>-->
     
             <div class="search-result">
                 <!-- <img src="https://images.unsplash.com/photo-1705792960060-a8deefe94a40?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxM3x8fGVufDB8fHx8fA%3D%3D" alt="2">
@@ -250,10 +255,9 @@
         </div>
     
         
-        <button id="show-more-button" class="show-more-button">Show More</button>
+        <button id="show-more-button" class="show-more-button" title="Click Show More to view more results related to Current search">Show More</button>
         <button onclick="scrollToTop()" id="topButton" >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);"><path d="M7 14h10l-5-6z"></path><path d="M19 3H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM5 19V5h14l.002 14H5z"></path></svg>
-            Top
 
         </button>
 
@@ -315,7 +319,7 @@
                     if (predictions.length > 0) {
                     // Get the label of the first detected object
                     detectedLabel = predictions[0].class;
-                    output.textContent = `Detected Object: ${detectedLabel}`;
+                    // output.textContent = `Detected Object: ${detectedLabel}`;
 
                     // Set the search term to detectedLabel (in lowercase)
                     document.getElementById("search-input").value = detectedLabel.toLowerCase();
@@ -422,7 +426,7 @@
         </script>
      
         
-        <script src="script.js"></script>
+        <script type="module" src="script.js"></script>
         <!-- <script type="module" src="fbscp.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
@@ -430,7 +434,7 @@
         <script>
 
 
-            displayRandomImages();
+            // displayRandomImages();
              
             const handleLogoClick = () => {
                 window.location.reload(); 
@@ -444,6 +448,10 @@
             history.replaceState(null, null, 'index.html');
         
             }
+
+            let bookmarkImage = () =>{
+                window.location.href = 'bookmark.html'
+            };
 
         
             signoutBtn.addEventListener('click', signOut);

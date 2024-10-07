@@ -29,15 +29,16 @@ header:hover {
     display: none; 
     position: fixed;
     bottom: 72px;
-    right: 30px;
+    right: 20px;
     z-index: 99; 
     background-color: #000000; 
     color: white; 
     padding: 15px;
     border: none;
-    border-radius: 15px;
+    border-radius: 20px;
     font-size: 18px;
     cursor: pointer;
+    align-items: center;
 }
 
 #topButton:hover {
@@ -46,11 +47,12 @@ header:hover {
 
 footer {
     /* background-color: #222; */
+    
     background: linear-gradient(135deg, #1abeff, #0084ff);
     color: #000000;
     text-align: center;
     padding: 10px;
-    margin-top: auto; /* Pushes the footer to the bottom */
+    /* margin-top: auto; Pushes the footer to the bottom */
     width: 100%;
 }
 
@@ -70,7 +72,7 @@ footer {
 .social-links {
     /* color: #000000; */
     margin-top: 0px;
-    margin-left: 800px;
+    margin-left: 700px;
     padding-top: 0px;
 }
 
@@ -265,6 +267,7 @@ header:hover h1 {
 }
 
 body {
+    
     /* background: linear-gradient(#e66465, #9198e5); */
     background: linear-gradient(to right,rgb(255, 255, 255), rgb(100, 185, 250));
 }
@@ -459,7 +462,8 @@ form {
     gap: 20px;
 
     max-width: 1200px;
-    height: auto;
+    height: full;
+    min-height: 100vh;
     margin: 0 auto;
 }
 
@@ -584,6 +588,7 @@ form {
 
 .moreContent :hover{
     background-color: #41a3ff;
+    /* z-index: 99; */
 }
 
 
@@ -592,6 +597,7 @@ form {
     position: relative;
     display: inline-block;
     border: none ;
+    /* z-index: 1; */
 }
 
 .dropdown-content {
@@ -601,6 +607,7 @@ form {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    
 }
 
 .dropdown-content div {
@@ -660,61 +667,56 @@ form {
 }
 
 
-
-
-@media screen and (max-width : 768px) {
-
-    .search-results{
-        margin-left: 40px;
-        flex-wrap: wrap;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-    .search-result {
-        width: calc(50% - 20px);
-        /* margin-left: 60px; */
-    }
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
     .sidebar {
-        width: 50px; /* Smaller width for tablets and smaller screens */
+        width: 60px; 
+        display: none;
     }
-    
+    .logo {
+        width: 40px; 
+        position: absolute; /* Keep logo on the left corner */
+        top: 15px; /* Adjust top position */
+        left: 15px; /* Adjust left position */
+    }
+    #topButton {
+        bottom: 20px; 
+    }
+    h1 {
+        font-size: 24px; /* Adjusted font size */
+    }
+    .search-results {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    }
 }
 
-
-@media screen and (max-width : 480px) {
-    .search-results{
-        margin-top: 20px;
-        justify-content: center;
-        /* margin-left: 40px; */
-    }
-    .search-result {
-        width: calc(100% - 20px);
-        max-width: none;
-        
-    }
+@media (max-width: 480px) {
     .sidebar {
-        margin-top: -45px;
-        width: 78px;
-        height: 500px;
-        max-height: none;
-        position: relative; /* Adjust position for mobile screens */
+        width: 50px; 
+        display: none;
+    }
+    .logo {
+        width: 30px; 
+    }
+    .header-name {
+        font-size: 10px; /* Further adjusted font size */
+    }
+    #search-input {
+        font-size: 16px; 
+    }
+    #search-button,
+    .imageUpload,
+    #signoutbutton {
+        font-size: 16px; 
     }
     
-    .sidebar-icons {
-        width: 100%;
-        flex-direction: row; /* Align icons horizontally */
-        padding: 5px;
-    }
-    
-    .sidebar-icons-c {
-        width: 100%;
-        text-align: center;
-    }
-
+    /* Show More Button adjustments */
     .show-more-button {
-        margin-left: 150px;
-        /* justify-content: center; */
+        position: absolute;
+        left: 15px;
+        font-size: 16px; /* Adjusted font size for smaller screens */
     }
-    
 }
+
+
 

@@ -1,24 +1,24 @@
 
 
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-// import { getDatabase, set, push , ref, get, child, update } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
-// import { getAuth } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+import { getDatabase, set, push , ref, get, child, update } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 
-// const firebaseConfig = {
-//     apiKey: "AIzaSyB78syYL7IBWxr4cxeFwI54tSsRiwXH9ls",
-//     authDomain: "image-gallery-api-257d8.firebaseapp.com",
-//     databaseURL: "https://image-gallery-api-257d8-default-rtdb.firebaseio.com",
-//     projectId: "image-gallery-api-257d8",
-//     storageBucket: "image-gallery-api-257d8.appspot.com",
-//     messagingSenderId: "590720156198",
-//     appId: "1:590720156198:web:0bf983a4dcad7284e71ce7"
-// };
+const firebaseConfig = {
+    apiKey: "AIzaSyB78syYL7IBWxr4cxeFwI54tSsRiwXH9ls",
+    authDomain: "image-gallery-api-257d8.firebaseapp.com",
+    databaseURL: "https://image-gallery-api-257d8-default-rtdb.firebaseio.com",
+    projectId: "image-gallery-api-257d8",
+    storageBucket: "image-gallery-api-257d8.appspot.com",
+    messagingSenderId: "590720156198",
+    appId: "1:590720156198:web:0bf983a4dcad7284e71ce7"
+};
 
 
-// const app = initializeApp(firebaseConfig);
-// const db = getDatabase();
-// const auth = getAuth(app);
-// const dbref = ref(db);
+const app = initializeApp(firebaseConfig);
+const db = getDatabase();
+const auth = getAuth(app);
+const dbref = ref(db);
 // const dbRef = firebase.database().ref();
 
 
@@ -97,20 +97,43 @@ async function searchImages(isNewSearch = false) {
 
         icon1.addEventListener("click", () => {
             if (!isClicked) {
-                // const userId = auth.currentUser.uid; 
-                // const imageId= result.id;
-
-                
-                // const userImageRef = ref(db, `UsersAuthList/${userId}/imageIds/${imageId}`);
-
-               
-                // set(userImageRef, true)
-                //     .then(() => {
-                //         console.log("Image ID added successfully!");
-                //     })
-                //     .catch((error) => {
-                //         console.error("Error adding Image ID:", error);
-                //     });
+                const userId = auth.currentUser.uid;
+                const imageId = result.id;
+        
+                // Reference to the user's imageIds in the database
+                const userImageListRef = ref(db, `UsersAuthList/${userId}/imageIds`);
+        
+                // Check if the imageId already exists
+                get(userImageListRef).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        const imageIds = snapshot.val();
+                        const imageIdExists = Object.values(imageIds).includes(imageId);
+        
+                        if (!imageIdExists) {
+                            // Add imageId only if it doesn't exist
+                            push(userImageListRef, imageId)
+                                .then(() => {
+                                    console.log("Image ID added successfully!");
+                                })
+                                .catch((error) => {
+                                    console.error("Error adding Image ID:", error);
+                                });
+                        } else {
+                            console.log("Image ID already exists, not adding again.");
+                        }
+                    } else {
+                        // No existing imageIds, so directly add the first one
+                        push(userImageListRef, imageId)
+                            .then(() => {
+                                console.log("Image ID added successfully!");
+                            })
+                            .catch((error) => {
+                                console.error("Error adding Image ID:", error);
+                            });
+                    }
+                }).catch((error) => {
+                    console.error("Error retrieving Image IDs:", error);
+                });
 
 
 
@@ -183,7 +206,7 @@ async function searchImages(isNewSearch = false) {
 
             const downloadLink = document.createElement("a");
             downloadLink.href = result.links.download;
-            // downloadLink.target = "_blank";
+            downloadLink.target = "_blank";
             downloadLink.download = 'downloaded-image.png';
             document.body.appendChild(downloadLink);
             downloadLink.click();
@@ -207,6 +230,14 @@ async function searchImages(isNewSearch = false) {
     pageNo++;
     showMore.style.display = "block"; // Show the "Show More" button
 }
+
+// Expose searchImages to the global scope
+window.searchImages = searchImages;
+
+// Automatically load images on page load
+document.addEventListener("DOMContentLoaded", () => {
+    searchImages(true);
+});
 
 formElement.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -233,4 +264,4 @@ dropdownLinks.forEach(link => {
     });
 });
 
-// displayRandomImages();
+displayRandomImages();
