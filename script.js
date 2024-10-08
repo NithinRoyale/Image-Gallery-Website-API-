@@ -35,7 +35,7 @@ let inputData = "";
 let pageNo = 1;
 
 function getRandomSearchTerm() {
-    const randomWords = ['random', 'baby', 'car', 'birds', 'pink', 'Night', 'Drink', 'sky', 'water'];
+    const randomWords = ['random', 'baby', 'car', 'bird', 'pink', 'Night', 'Drink', 'sky', 'ocean','People','abstract'];
     return randomWords[Math.floor(Math.random() * randomWords.length)];
 }
 

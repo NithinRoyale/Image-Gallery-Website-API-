@@ -20,7 +20,7 @@ header:hover {
     width: 55px; 
     /* height: auto;  */
     margin-top: -165px;
-    margin-left: 410px; 
+    margin-left: 480px; 
     /* display:inline-block;  */
     /* vertical-align: middle;  */
 }
@@ -473,6 +473,7 @@ form {
     width: 400px;
     max-width: 100%;
     height: auto;
+    max-height: 430px;
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 0 6px rgba(0,0,0,0.5);
@@ -494,6 +495,8 @@ form {
 }
 
 .search-result:hover {
+    height: auto;
+    max-height: 490px;
     opacity: .9;
     box-shadow: 4px 3px 10px rgba(0, 0, 0, 0.5);   
     transform: scale(1.05);
@@ -626,11 +629,6 @@ form {
     display: block;
     
 }
-
-
-
-
-
 
 
 

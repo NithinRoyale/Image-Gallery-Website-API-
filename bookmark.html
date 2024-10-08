@@ -21,7 +21,7 @@
             height: auto;
         } */
 
-        h1{
+        #book{
             margin-bottom: 30px;
         }
 
@@ -49,6 +49,7 @@
             width: 400px;
             max-width: 100%;
             height: auto;
+            max-height: 430px;
             border-radius: 5px;
             overflow: hidden;
             box-shadow: 0 0 6px rgba(0,0,0,0.5);
@@ -70,6 +71,8 @@
         }
 
         .search-result-bookmark:hover {
+            height: auto;
+            max-height: 490px;
             opacity: .9;
             box-shadow: 4px 3px 10px rgba(0, 0, 0, 0.5);   
             transform: scale(1.05);
@@ -133,13 +136,17 @@
         }
 
         .home-container {
-        position: relative;
-        display: inline-block;
-        position: absolute;
-        right: 20px;
-        top: 17px;
+            position: relative;
+            display: inline-block;
+            position: absolute;
+            right: 20px;
+            top: 17px;
         }
         
+        .logo {
+            width: 55px; 
+            margin-left: 480px; 
+        }
 
 
     </style>
@@ -236,7 +243,7 @@
     <img src="favicon.png" alt="Logo" class="logo">
    
     <!-- <button id="loadImages" class="btn btn-primary">Load Images</button> -->
-     <h1>Bookmarked Images:</h1>
+     <h1 id="book">Bookmarked Images:</h1>
 
     <div class="search-results-bookmark">
         <!-- <div class="search-result-bookmark"></div> -->
