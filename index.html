@@ -64,6 +64,22 @@
                     <input type="password" placeholder="Password" id="PasswordInp">
                 </div>
 
+                <!-- New phone number field -->
+                <div class="input-field">
+                    <i class="fas fa-phone"></i>
+                    <input type="text" placeholder="Phone Number" id="phoneInp">
+                    <button type="button" onclick="sendOTP()">Send OTP</button>
+                </div>
+
+                <div id="recaptcha-container"></div>
+
+                <!-- OTP input field -->
+                <div class="input-field">
+                    <input type="text" placeholder="Enter OTP" id="otpInp">
+                    <button type="button" onclick="verifyOTP()">Verify OTP</button>
+                </div>
+
+
                 <input type="submit" value="Sign up" class="btn" id="register">
 
 
@@ -135,7 +151,7 @@
         // import necessory
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
         import { getDatabase, set, ref, get, child } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, RecaptchaVerifier, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 
 
         // TODO: Add SDKs for Firebase products that you want to use
@@ -168,60 +184,123 @@
         let PasswordInp2 =document.getElementById("PasswordInp2");
         let emailInp2 =document.getElementById("emailInp2");
 
+        let phoneInp = document.getElementById("phoneInp");
+        let otpInp = document.getElementById("otpInp");
+
+        
+        function sendOTP() {
+    const phoneNumber = phoneInp.value;
+
+    // Initialize reCAPTCHA right before sending the OTP
+    const appVerifier = new RecaptchaVerifier('recaptcha-container', {
+        'size': 'normal',
+        'callback': function (response) {
+            // reCAPTCHA solved - proceed with phone authentication
+        },
+        'expired-callback': function () {
+            alert("reCAPTCHA expired, please try again.");
+        }
+    }, auth); // Ensure 'auth' is defined
+
+    signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+        .then((confirmationResult) => {
+            window.confirmationResult = confirmationResult;
+            alert("OTP sent to your phone.");
+        })
+        .catch((error) => {
+            console.error("Error during sending OTP:", error);
+            alert("Error sending OTP. Please try again.");
+        });
+}
+
+// Function to verify OTP and register the user
+function verifyOTP() {
+    const otpCode = otpInp.value; // Changed from otpInput to otpInp
+
+    // Verifying the OTP entered by the user
+    window.confirmationResult.confirm(otpCode)
+        .then((result) => {
+            // OTP verified successfully, user signed in with phone number
+            const user = result.user;
+            alert("Phone verified successfully!");
+
+            // Proceed with email/password registration after phone verification
+            registerWithEmailAndPassword(); // Call this function after verification
+        })
+        .catch((error) => {
+            console.error("Error during OTP verification:", error);
+            alert("Invalid OTP, please try again.");
+        });
+}
+
+
+        window.sendOTP = sendOTP;
+window.verifyOTP = verifyOTP;
+
+
+
         let registerUser = (event) =>{
             event.preventDefault();
 
-            createUserWithEmailAndPassword(auth,emailInp.value, PasswordInp.value)
-            .then((credentials) =>{
-                // console.log(credentials)
-                set(ref(db, 'UsersAuthList/' + credentials.user.uid),{
-                    UserName: userNameInp.value,
-                    Email: emailInp.value
+            const phoneNumber = phoneInp.value;
+            const appVerifier = window.recaptchaVerifier;
+
+            
+                    createUserWithEmailAndPassword(auth,emailInp.value, PasswordInp.value)
+                    .then((credentials) =>{
+                        // console.log(credentials)
+                        set(ref(db, 'UsersAuthList/' + credentials.user.uid),{
+                            UserName: userNameInp.value,
+                            Email: emailInp.value,
+                            PhoneNumber: phoneInp.value
+                        })
+                        .then(() => {
+                            alert("User registered successfully!");
+                        })
+                        .catch((error) => {
+                            console.error("Error saving user info: ", error);
+                        });
+                    })
+                    .catch((error) =>{
+                        alert(error.message);
+                        console.log(error.code);
+                        console.log(error.message);
+                    })
+            }
+
+            signUp.addEventListener("submit", registerUser);
+
+
+            let loginUser = (event) =>{
+                event.preventDefault();
+
+                signInWithEmailAndPassword(auth,emailInp2.value, PasswordInp2.value)
+                .then((credentials) =>{
+                    // console.log(credentials)
+                    get(child(dbref, 'UsersAuthList/' + credentials.user.uid)).then((snapshot)=>{
+                        if(snapshot.exists()){
+                            sessionStorage.setItem("user-info", JSON.stringify({
+                                UserName: snapshot.val().UserName,
+                                Email: snapshot.val().Email,
+                                Phone: snapshot.val() .PhoneNumber 
+                                
+                            }));
+
+                            sessionStorage.setItem("user-creds",JSON.stringify(credentials.user));
+                            window.location.href ="home.html";
+                        }
+                    }).catch((error) => {
+                        console.error("Error fetching user data: ", error);
+                    });
                 })
-                .then(() => {
-                    alert("User registered successfully!");
+                .catch((error) =>{
+                    alert(error.message);
+                    console.log(error.code);
+                    console.log(error.message);
                 })
-                .catch((error) => {
-                    console.error("Error saving user info: ", error);
-                });
-            })
-            .catch((error) =>{
-                alert(error.message);
-                console.log(error.code);
-                console.log(error.message);
-            })
-        }
+            }
 
-        signUp.addEventListener("submit", registerUser);
-
-
-        let loginUser = (event) =>{
-            event.preventDefault();
-
-            signInWithEmailAndPassword(auth,emailInp2.value, PasswordInp2.value)
-            .then((credentials) =>{
-                // console.log(credentials)
-                get(child(dbref, 'UsersAuthList/' + credentials.user.uid)).then((snapshot)=>{
-                    if(snapshot.exists()){
-                        sessionStorage.setItem("user-info", JSON.stringify({
-                            UserName: snapshot.val().UserName,
-                            Email: snapshot.val().Email  
-                            
-                        }));
-
-                        sessionStorage.setItem("user-creds",JSON.stringify(credentials.user));
-                        window.location.href ="home.html";
-                    }
-                })
-            })
-            .catch((error) =>{
-                alert(error.message);
-                console.log(error.code);
-                console.log(error.message);
-            })
-        }
-
-        signIn.addEventListener("submit", loginUser);
+            signIn.addEventListener("submit", loginUser);
 
 
     </script>
