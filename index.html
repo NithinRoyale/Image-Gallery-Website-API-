@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="login-register.css">
-    
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="login-register.css" />
+    <link rel="stylesheet" href="email.css" />
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
     <title>Slider SignIn/SignUp Page</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="container">
-        <div class="signin-signup">
-            <form action="" class="sign-in-form" id="sign-in">
-                <h2 class="title">Sign in</h2>
-                <div class="input-field">
-                    <i class="fas fa-envelope"></i>
-                    <input type="text" placeholder="Email" id="emailInp2">
-                </div>
+      <div class="signin-signup">
+        <form action="" class="sign-in-form" id="sign-in">
+          <h2 class="title">Sign in</h2>
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="text" placeholder="Email" id="emailInp2" />
+          </div>
 
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" id="PasswordInp2">
-                </div>
-                
-                <input type="submit" value="Login" class="btn" id="login">
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" id="PasswordInp2" />
+          </div>
 
-                <!-- <p class="social-text">Or Sign in with social platform</p>
+          <input type="submit" value="Login" class="btn" id="login" />
+
+          <!-- <p class="social-text">Or Sign in with social platform</p>
                 <div class="social-media">
                     <a href="#" class="social-icon">
                         <i class="fab fa-facebook"></i>
@@ -43,47 +49,53 @@
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div> -->
-                <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a></p>
-            </form>
+          <p class="account-text">
+            Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a>
+          </p>
+        </form>
 
+        <form action="" class="sign-up-form" id="sign-up">
+          <h2 class="title">Sign up</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Username" id="userNameInp" />
+          </div>
 
-            <form action="" class="sign-up-form" id="sign-up">
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="text" placeholder="Email" id="emailInp" />
+            <button type="button" class="otpsend" onclick="sendotp()">
+              Send OTP
+            </button>
+          </div>
 
-                <h2 class="title">Sign up</h2>
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username" id="userNameInp">
-                </div>
+          <!-- OTP input field -->
+          <div class="otpverify">
+            <div class="input-field">
+              <i class="fas fa-circle"></i>
+              <input type="text" placeholder="Enter OTP" id="otpInp" />
+              <button type="button" id="otpbtn">Verify OTP</button>
+            </div>
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" id="PasswordInp" />
+          </div>
 
-                <div class="input-field">
-                    <i class="fas fa-envelope"></i>
-                    <input type="text" placeholder="Email" id="emailInp">
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" id="PasswordInp">
-                </div>
+          <!-- New phone number field
+          <div class="input-field">
+            <i class="fas fa-phone"></i>
+            <input type="text" placeholder="Phone Number" id="phoneInp" />
+            <button type="button" id="otpph" onclick="sendOTP()">Send </button>
+          </div>
 
-                <!-- New phone number field -->
-                <div class="input-field">
-                    <i class="fas fa-phone"></i>
-                    <input type="text" placeholder="Phone Number" id="phoneInp">
-                    <button type="button" onclick="sendOTP()">Send OTP</button>
-                </div>
+          <div id="recaptcha-container"></div> -->
 
-                <div id="recaptcha-container"></div>
+          <!-- <button class="btn">Send OTP</button> -->
 
-                <!-- OTP input field -->
-                <div class="input-field">
-                    <input type="text" placeholder="Enter OTP" id="otpInp">
-                    <button type="button" onclick="verifyOTP()">Verify OTP</button>
-                </div>
+          <input type="submit" value="Sign up" class="btn" id="register" />
 
-
-                <input type="submit" value="Sign up" class="btn" id="register">
-
-
-                <!-- <p class="social-text">Or Sign in with social platform</p>
+          <!-- <p class="social-text">Or Sign in with social platform</p>
                 <div class="social-media">
                     <a href="#" class="social-icon">
                         <i class="fab fa-facebook"></i>
@@ -98,211 +110,222 @@
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div> -->
-                <p class="account-text">Already have an account? <a href="#" id="sign-in-btn2">Sign in</a></p>
-            </form>
+          <p class="account-text">
+            Already have an account? <a href="#" id="sign-in-btn2">Sign in</a>
+          </p>
+        </form>
+      </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>Existing User ?..</h3>
+            <!-- <p>any detail </p> -->
+            <button class="btn" id="sign-in-btn">Sign in</button>
+          </div>
+          <img src="signin.svg" alt="" class="image" />
         </div>
 
-
-        <div class="panels-container">
-            <div class="panel left-panel">
-                <div class="content">
-                    <h3>Existing User ?..</h3>
-                    <!-- <p>any detail </p> -->
-                    <button class="btn" id="sign-in-btn">Sign in</button>
-                </div>
-                <img src="signin.svg" alt="" class="image">
-            </div>
-
-            <div class="panel right-panel">
-                <div class="content">
-                    <h3>New User ?..</h3>
-                    <!-- <p>any detail</p> -->
-                    <button class="btn" id="sign-up-btn">Sign up</button>
-                </div>
-                <img src="signup.svg" alt="" class="image">
-            </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>New User ?..</h3>
+            <!-- <p>any detail</p> -->
+            <button class="btn" id="sign-up-btn">Sign up</button>
+          </div>
+          <img src="signup.svg" alt="" class="image" />
         </div>
+      </div>
     </div>
 
+    <script src="emailotp.js"></script>
 
     <script>
-        const sign_in_btn = document.querySelector("#sign-in-btn");
-        const sign_up_btn = document.querySelector("#sign-up-btn");
-        const container = document.querySelector(".container");
-        const sign_in_btn2 = document.querySelector("#sign-in-btn2");
-        const sign_up_btn2 = document.querySelector("#sign-up-btn2");
+      const sign_in_btn = document.querySelector("#sign-in-btn");
+      const sign_up_btn = document.querySelector("#sign-up-btn");
+      const container = document.querySelector(".container");
+      const sign_in_btn2 = document.querySelector("#sign-in-btn2");
+      const sign_up_btn2 = document.querySelector("#sign-up-btn2");
 
-
-        sign_up_btn.addEventListener("click", () => {
-            container.classList.add("sign-up-mode");
-        });
-        sign_in_btn.addEventListener("click", () => {
-            container.classList.remove("sign-up-mode");
-        });
-        sign_up_btn2.addEventListener("click", () => {
-            container.classList.add("sign-up-mode2");
-        });
-        sign_in_btn2.addEventListener("click", () => {
-            container.classList.remove("sign-up-mode2");
-        });
+      sign_up_btn.addEventListener("click", () => {
+        container.classList.add("sign-up-mode");
+      });
+      sign_in_btn.addEventListener("click", () => {
+        container.classList.remove("sign-up-mode");
+      });
+      sign_up_btn2.addEventListener("click", () => {
+        container.classList.add("sign-up-mode2");
+      });
+      sign_in_btn2.addEventListener("click", () => {
+        container.classList.remove("sign-up-mode2");
+      });
     </script>
 
     <script type="module">
-        // import necessory
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-        import { getDatabase, set, ref, get, child } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, RecaptchaVerifier, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+      import {
+        getDatabase,
+        set,
+        ref,
+        get,
+        child,
+      } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        RecaptchaVerifier,
+        signInWithPhoneNumber,
+      } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyB78syYL7IBWxr4cxeFwI54tSsRiwXH9ls",
+        authDomain: "image-gallery-api-257d8.firebaseapp.com",
+        databaseURL:
+          "https://image-gallery-api-257d8-default-rtdb.firebaseio.com",
+        projectId: "image-gallery-api-257d8",
+        storageBucket: "image-gallery-api-257d8.appspot.com",
+        messagingSenderId: "590720156198",
+        appId: "1:590720156198:web:0bf983a4dcad7284e71ce7",
+      };
 
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-    
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyB78syYL7IBWxr4cxeFwI54tSsRiwXH9ls",
-            authDomain: "image-gallery-api-257d8.firebaseapp.com",
-            databaseURL: "https://image-gallery-api-257d8-default-rtdb.firebaseio.com",
-            projectId: "image-gallery-api-257d8",
-            storageBucket: "image-gallery-api-257d8.appspot.com",
-            messagingSenderId: "590720156198",
-            appId: "1:590720156198:web:0bf983a4dcad7284e71ce7"
-        };
-    
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db =getDatabase();
-        const auth =getAuth(app);
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase();
+      const auth = getAuth(app);
 
-        const dbref =ref(db);
+      const dbref = ref(db);
 
-        let signIn =document.getElementById("sign-in");
-        let signUp =document.getElementById("sign-up");
-        let PasswordInp =document.getElementById("PasswordInp");
-        let emailInp =document.getElementById("emailInp");
-        let userNameInp =document.getElementById("userNameInp");
+      let signIn = document.getElementById("sign-in");
+      let signUp = document.getElementById("sign-up");
+      let PasswordInp = document.getElementById("PasswordInp");
+      let emailInp = document.getElementById("emailInp");
+      let userNameInp = document.getElementById("userNameInp");
 
-        let PasswordInp2 =document.getElementById("PasswordInp2");
-        let emailInp2 =document.getElementById("emailInp2");
+      let PasswordInp2 = document.getElementById("PasswordInp2");
+      let emailInp2 = document.getElementById("emailInp2");
 
-        let phoneInp = document.getElementById("phoneInp");
-        let otpInp = document.getElementById("otpInp");
+      let phoneInp = document.getElementById("phoneInp");
+      let otpInp = document.getElementById("otpInp");
+      const phoneNumber = "+919344688448";
 
-        
-        function sendOTP() {
-    const phoneNumber = phoneInp.value;
+      function sendOTP() {
+        // const phoneNumber = phoneInp.value;
+        console.log("Sending OTP to:", phoneNumber);
 
-    // Initialize reCAPTCHA right before sending the OTP
-    const appVerifier = new RecaptchaVerifier('recaptcha-container', {
-        'size': 'normal',
-        'callback': function (response) {
-            // reCAPTCHA solved - proceed with phone authentication
-        },
-        'expired-callback': function () {
-            alert("reCAPTCHA expired, please try again.");
-        }
-    }, auth); // Ensure 'auth' is defined
+        const appVerifier = new RecaptchaVerifier(
+          "recaptcha-container",
+          {
+            size: "normal",
+            callback: function (response) {
+              console.log(
+                "reCAPTCHA solved - proceed with phone authentication"
+              );
+            },
+            "expired-callback": function () {
+              alert("reCAPTCHA expired, please try again.");
+            },
+          },
+          auth
+        );
 
-    signInWithPhoneNumber(auth, phoneNumber, appVerifier)
-        .then((confirmationResult) => {
+        signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+          .then((confirmationResult) => {
             window.confirmationResult = confirmationResult;
             alert("OTP sent to your phone.");
-        })
-        .catch((error) => {
+            console.log("OTP sent successfully.");
+          })
+          .catch((error) => {
             console.error("Error during sending OTP:", error);
             alert("Error sending OTP. Please try again.");
-        });
-}
+          });
+      }
 
-// Function to verify OTP and register the user
-function verifyOTP() {
-    const otpCode = otpInp.value; // Changed from otpInput to otpInp
+      function verifyOTP() {
+        const otpCode = otpInp.value;
 
-    // Verifying the OTP entered by the user
-    window.confirmationResult.confirm(otpCode)
-        .then((result) => {
-            // OTP verified successfully, user signed in with phone number
+        window.confirmationResult
+          .confirm(otpCode)
+          .then((result) => {
             const user = result.user;
             alert("Phone verified successfully!");
-
-            // Proceed with email/password registration after phone verification
-            registerWithEmailAndPassword(); // Call this function after verification
-        })
-        .catch((error) => {
+            console.log("Phone verification successful for:", user.phoneNumber);
+            registerWithEmailAndPassword();
+          })
+          .catch((error) => {
             console.error("Error during OTP verification:", error);
             alert("Invalid OTP, please try again.");
-        });
-}
+          });
+      }
 
+      window.sendOTP = sendOTP;
+      window.verifyOTP = verifyOTP;
 
-        window.sendOTP = sendOTP;
-window.verifyOTP = verifyOTP;
+      let registerUser = (event) => {
+        event.preventDefault();
 
+        // const phoneNumber = phoneInp.value;
+        const phoneNumber = "+919344688448";
 
+        createUserWithEmailAndPassword(auth, emailInp.value, PasswordInp.value)
+          .then((credentials) => {
+            set(ref(db, "UsersAuthList/" + credentials.user.uid), {
+              UserName: userNameInp.value,
+              Email: emailInp.value,
+              PhoneNumber: phoneInp.value,
+            })
+              .then(() => {
+                alert("User registered successfully!");
+              })
+              .catch((error) => {
+                console.error("Error saving user info: ", error);
+              });
+          })
+          .catch((error) => {
+            alert(error.message);
+            console.log(error.code);
+            console.log(error.message);
+          });
+      };
 
-        let registerUser = (event) =>{
-            event.preventDefault();
+      signUp.addEventListener("submit", registerUser);
 
-            const phoneNumber = phoneInp.value;
-            const appVerifier = window.recaptchaVerifier;
+      let loginUser = (event) => {
+        event.preventDefault();
 
-            
-                    createUserWithEmailAndPassword(auth,emailInp.value, PasswordInp.value)
-                    .then((credentials) =>{
-                        // console.log(credentials)
-                        set(ref(db, 'UsersAuthList/' + credentials.user.uid),{
-                            UserName: userNameInp.value,
-                            Email: emailInp.value,
-                            PhoneNumber: phoneInp.value
-                        })
-                        .then(() => {
-                            alert("User registered successfully!");
-                        })
-                        .catch((error) => {
-                            console.error("Error saving user info: ", error);
-                        });
+        signInWithEmailAndPassword(auth, emailInp2.value, PasswordInp2.value)
+          .then((credentials) => {
+            get(child(dbref, "UsersAuthList/" + credentials.user.uid))
+              .then((snapshot) => {
+                if (snapshot.exists()) {
+                  sessionStorage.setItem(
+                    "user-info",
+                    JSON.stringify({
+                      UserName: snapshot.val().UserName,
+                      Email: snapshot.val().Email,
+                      Phone: snapshot.val().PhoneNumber,
                     })
-                    .catch((error) =>{
-                        alert(error.message);
-                        console.log(error.code);
-                        console.log(error.message);
-                    })
-            }
+                  );
 
-            signUp.addEventListener("submit", registerUser);
+                  sessionStorage.setItem(
+                    "user-creds",
+                    JSON.stringify(credentials.user)
+                  );
+                  window.location.href = "home.html";
+                }
+              })
+              .catch((error) => {
+                console.error("Error fetching user data: ", error);
+              });
+          })
+          .catch((error) => {
+            alert(error.message);
+            console.log(error.code);
+            console.log(error.message);
+          });
+      };
 
-
-            let loginUser = (event) =>{
-                event.preventDefault();
-
-                signInWithEmailAndPassword(auth,emailInp2.value, PasswordInp2.value)
-                .then((credentials) =>{
-                    // console.log(credentials)
-                    get(child(dbref, 'UsersAuthList/' + credentials.user.uid)).then((snapshot)=>{
-                        if(snapshot.exists()){
-                            sessionStorage.setItem("user-info", JSON.stringify({
-                                UserName: snapshot.val().UserName,
-                                Email: snapshot.val().Email,
-                                Phone: snapshot.val() .PhoneNumber 
-                                
-                            }));
-
-                            sessionStorage.setItem("user-creds",JSON.stringify(credentials.user));
-                            window.location.href ="home.html";
-                        }
-                    }).catch((error) => {
-                        console.error("Error fetching user data: ", error);
-                    });
-                })
-                .catch((error) =>{
-                    alert(error.message);
-                    console.log(error.code);
-                    console.log(error.message);
-                })
-            }
-
-            signIn.addEventListener("submit", loginUser);
-
-
+      signIn.addEventListener("submit", loginUser);
     </script>
-</body>
+  </body>
 </html>
