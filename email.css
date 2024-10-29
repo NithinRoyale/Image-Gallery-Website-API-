@@ -79,5 +79,6 @@
 }
 
 #register{
+    /* display: block; */
     display: none;
 }
