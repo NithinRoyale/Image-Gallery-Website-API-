@@ -438,30 +438,6 @@
         
         <script>
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Get the "Show More" button
-    const showMoreButton = document.getElementById('show-more-button');
-    
-    // Create an IntersectionObserver instance
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            // If the "Show More" button is visible in the viewport
-            if (entry.isIntersecting) {
-                // Trigger the click event
-                showMoreButton.click();
-            }
-        });
-    }, {
-        root: null, // Use the viewport as the root
-        rootMargin: '30px', // No margin from the root (viewport)
-        threshold: 1.0 // Fire the callback when 100% of the element is visible
-    });
-
-    // Observe the "Show More" button
-    observer.observe(showMoreButton);
-});
-
-
 
             // displayRandomImages();
              
