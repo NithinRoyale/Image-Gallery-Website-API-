@@ -512,6 +512,25 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
+
+
+
+            function infiniteScroll() {
+            const showMore  = document.getElementById('show-more-button');
+            const scrollPosition = window.scrollY + window.innerHeight; // Total scroll position
+            const documentHeight = document.body.offsetHeight; // Total document height
+            
+            // Check if we are between 80% and 90% of the page height
+            if (scrollPosition >= documentHeight * 0.95) {
+                showMore .click(); // Simulate a click on the button
+            }
+            }
+
+            // Attach the scroll event listener
+            window.onscroll = function() {
+                infiniteScroll();
+            };
+
         </script>
     </body>
 

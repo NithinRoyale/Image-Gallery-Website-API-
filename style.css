@@ -647,7 +647,7 @@ form {
     margin-left: 690px;
     cursor: pointer;
     border-radius: 5px;
-    /* display: none; */
+    display: none;
 }
 
 .show-more-button:hover {
