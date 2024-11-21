@@ -645,11 +645,9 @@ form {
     text-align: center;
     margin: 30px;
     margin-left: 690px;
-    /* cursor: pointer; */
+    cursor: pointer;
     border-radius: 5px;
-    /* display: none; */
-    opacity: 0;
-    pointer-events: none;
+    display: none;
 }
 
 .show-more-button:hover {

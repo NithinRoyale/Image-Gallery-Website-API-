@@ -228,7 +228,7 @@ async function searchImages(isNewSearch = false) {
 
 
     pageNo++;
-    showMore.style.display = "block"; // Show the "Show More" button
+    showMore.style.display = "none"; // Show the "Show More" button
 }
 
 // Expose searchImages to the global scope
